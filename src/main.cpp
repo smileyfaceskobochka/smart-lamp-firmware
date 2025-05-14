@@ -11,7 +11,7 @@
 #define PHOTO_PIN 10
 
 Network knownNets[] = {
-    {"SSID0", "PASS0"}, {"SSID1", "PASS1"}, {"SSID2", "PASS2"}};
+    {"HUAWEI-FR71E3", "0123456789"}, {"aRolf", "Chilllll"}, {"SSID", "PASS"}};
 
 DeviceClient lamp(knownNets, sizeof(knownNets) / sizeof(knownNets[0]),
                   "esp32-s3-device");
@@ -39,7 +39,7 @@ void setup() {
     Serial.printf("  auto_brightness: %s\n", s.auto_brightness ? "ON" : "OFF");
   });
 
-  lamp.begin("meowww.su", 80);
+  lamp.begin("192.168.3.4", 80);
 }
 
 void loop() {
