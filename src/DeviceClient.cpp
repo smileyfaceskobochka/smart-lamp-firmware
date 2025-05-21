@@ -10,7 +10,7 @@ DeviceClient::DeviceClient(const Network *nets, uint8_t count,
   state.color[0] = state.color[1] = state.color[2] = 0;
   state.brightness = 0;
   state.auto_brightness = false;
-  for (int i = 0; i < 4; ++i)
+  for (int i = 0; i < 3; ++i)
     state.position[i] = 0;
   state.auto_position = false;
   state.distance = 0.0f;
@@ -152,7 +152,7 @@ void DeviceClient::processControl(const JsonObject &s, const JsonVariantConst) {
     state.color[i] = s["color"][i];
   state.brightness = s["brightness"];
   state.auto_brightness = s["auto_brightness"];
-  for (int i = 0; i < 4; ++i)
+  for (int i = 0; i < 3; ++i)
     state.position[i] = s["position"][i];
   state.auto_position = s["auto_position"];
 }
@@ -207,8 +207,8 @@ void DeviceClient::setAutoBrightness(bool en, bool sendNow) {
   if (sendNow)
     sendState();
 }
-void DeviceClient::setPosition(const uint8_t posArr[4], bool sendNow) {
-  for (int i = 0; i < 4; ++i)
+void DeviceClient::setPosition(const int32_t posArr[3], bool sendNow) {
+  for (int i = 0; i < 3; ++i)
     state.position[i] = posArr[i];
   if (sendNow)
     sendState();

@@ -20,7 +20,7 @@ struct State {
   uint8_t color[3];
   uint8_t brightness;
   bool auto_brightness;
-  uint8_t position[4];
+  int32_t position[3];
   bool auto_position;
   float distance;
 };
@@ -39,7 +39,7 @@ public:
   void setBrightness(uint8_t b, bool sendNow = true);
   void setColor(uint8_t r, uint8_t g, uint8_t b, bool sendNow = true);
   void setAutoBrightness(bool en, bool sendNow = true);
-  void setPosition(const uint8_t pos[4], bool sendNow = true);
+  void setPosition(const int32_t pos[3], bool sendNow = true);
   void setAutoPosition(bool en, bool sendNow = true);
   void setDistance(float d, bool sendNow = true);
 
