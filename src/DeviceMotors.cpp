@@ -1,11 +1,10 @@
 #include "DeviceMotors.h"
 
-// Constants
-#define R_SENSE 0.11f                      // Ohm current sense resistor
-#define RMS_CURRENT 1900                   // mA RMS motor current
-#define MICROSTEPS 16                      // Microsteps per step
-#define USE_SPREAD true                    // SpreadCycle mode
-static const uint32_t STEP_DELAY_US = 250; // Delay between steps in µs
+#define R_SENSE 0.11f
+#define RMS_CURRENT 1900
+#define MICROSTEPS 16
+#define USE_SPREAD true
+static const uint32_t STEP_DELAY_US = 250;
 
 DeviceMotors::DeviceMotors(const MotorConfig *configs, uint8_t count,
                            HardwareSerial &uart, uint8_t rxPin, uint8_t txPin)
@@ -20,11 +19,10 @@ void DeviceMotors::begin() {
     pinMode(_configs[i].enPin, OUTPUT);
     pinMode(_configs[i].dirPin, OUTPUT);
     pinMode(_configs[i].stepPin, OUTPUT);
-    digitalWrite(_configs[i].enPin, LOW); // Enable (active LOW)
+    digitalWrite(_configs[i].enPin, LOW);
   }
   // Init UART
   _serial.begin(115200, SERIAL_8N1, _rxPin, _txPin);
-  // Create and configure each TMC2209
   for (uint8_t i = 0; i < _count; ++i) {
     drivers[i] = new TMC2209Stepper(&_serial, R_SENSE, _configs[i].address);
     drivers[i]->begin();

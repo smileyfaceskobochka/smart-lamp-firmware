@@ -21,7 +21,7 @@ using Light =
 static const MotorConfig motorConfigs[3] = {
     {4, 5, 6, 0},    // EN, DIR, STEP, address 0
     {12, 13, 14, 1}, // EN, DIR, STEP, address 1
-    {19, 20, 21, 2}  // EN, DIR, STEP, address 2
+    {35, 36, 37, 3}  // EN, DIR, STEP, address 2
 };
 
 // UART pins for PDN_UART
@@ -40,7 +40,7 @@ void setup() {
   Serial.println("Starting.");
 
   Light::begin();
-  lamp.begin("192.168.3.4", 80);
+  lamp.begin("meowww.su", 80);
 
   motors.begin(); // Initialize stepper drivers
 }

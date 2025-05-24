@@ -84,7 +84,6 @@ void DeviceClient::connectWS() {
   ws.onEvent([this](WebsocketsEvent event, String) {
     if (event == WebsocketsEvent::ConnectionOpened) {
       Serial.println("[WS] Opened");
-      // ArduinoJson 7: use JsonDocument
       JsonDocument doc;
       JsonObject root = doc.to<JsonObject>();
       root["type"] = "register";
